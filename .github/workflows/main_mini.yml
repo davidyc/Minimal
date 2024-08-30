@@ -45,6 +45,9 @@ jobs:
         with:
           name: .net-app
 
+      - name: List files in artifact directory
+        run: dir ./.net-app
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -58,4 +61,5 @@ jobs:
         with:
           app-name: 'Mini'
           slot-name: 'Production'
-          package: ./.net-app
+          package: $(System.DefaultWorkingDirectory)/_temp/myapp
+          
